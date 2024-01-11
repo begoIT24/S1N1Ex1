@@ -72,3 +72,13 @@
         .pie{
             background: #E5D283;
         }
+@media all and (max-width: 800px){     /* adaptación a tablet*/
+    .section{
+        flex-direction: column;
+    }
+}
+@media all and (max-width:400px){     /* adaptación a movil*/
+    .articulos{
+        flex-direction: column;
+    }
+  }
