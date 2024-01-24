@@ -6,5 +6,5 @@ echo "Dades rebudes:";
 
 echo "Nom: $nom" . "</br>";
 echo "e-mail: $mail" . "</br>";
-echo "curs: $curs" . "</br>";
+echo "curs: $curs";
 ?>
