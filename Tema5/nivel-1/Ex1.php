@@ -1,7 +1,7 @@
 <?php
    abstract class Animal{
     public $nom;
-    public function getNom($nom){
+    public function setNom($nom){
         $this -> nom = $nom;
     }
     abstract function makeSound();
@@ -17,10 +17,10 @@
             }
         }
     $gat = new Gat;
-    $gat -> getNom("gat");
+    $gat -> setNom("gat");
     echo $gat -> makeSound() . "<br/>";
    
     $gos = new Gos;
-    $gos -> getNom("gos");
+    $gos -> setNom("gos");
     echo $gos -> makeSound();
 ?>
