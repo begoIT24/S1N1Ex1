@@ -17,16 +17,14 @@ $cine2 -> AfegirPelis($peli3);
 $cine2 -> AfegirPelis($peli4);
 
 // Mostrar les dades de cada peli per cinema
-MostrarCataleg($cine1);
-echo '</br>';
+MostrarCataleg($cine1);  // Es pot millorar creant una array de cinemes i fent un foreach
+echo '</br>';               // per mostrar catàleg de tots amb una sola crida  
 MostrarCataleg($cine2);
 echo '</br>';
 
 function MostrarCataleg($cine) {
-    echo 'Les pelis del cinema '.$cine->getNomCinema().' són:'.'</br>';	
-    foreach($cine as $peli) {
-        echo 'Titol: '.$peli->getTitol().' / Director: '.$peli->getDirector().' / Durada (min): '.$peli->getMinuts().'</br>';
-    };
+    echo 'Les pelis del cinema '.$cine->getNomCinema().' són:'.'</br>';
+    $cine->obtenirCatalegPelis();
 };
 
 // Peli amb major duració

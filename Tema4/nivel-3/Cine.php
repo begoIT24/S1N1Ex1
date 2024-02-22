@@ -22,7 +22,12 @@ class Cine{
     public function getNomCinema() : string{
         return $this-> nom;
     }
-  
+
+    public function obtenirCatalegPelis() {
+        foreach($this->pelis as $peli) {
+            echo 'Titol: '.$peli->getTitol().' / Director: '.$peli->getDirector().' / Durada (min): '.$peli->getMinuts().'</br>';
+        }
+    }
     public function obtenirMaxDurada() {
         $maxDurada=0;
         $nomPeli="";
