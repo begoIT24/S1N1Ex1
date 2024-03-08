@@ -1,15 +1,16 @@
 <?php
+require_once ('Estado.php');
 class Libro{
     private string $titulo;
     private string $autor;
-    private string $estado;
+    protected Estado $estado;
     private int $numPag;
 
-    public function __construct(string $titulo, string $autor, string $estado, int $numPag){
-        $this ->titulo = $titulo;
-        $this ->autor = $autor;
-        $this ->estado = $estado;
-        $this ->numPag = $numPag;
+    public function __construct(string $titulo, string $autor, Estado $estado, int $numPag){
+        $this -> titulo = $titulo;
+        $this -> autor = $autor;
+        $this -> estado = $estado;
+        $this -> numPag = $numPag;
     }
 
     public function getTitulo(): string{
@@ -20,8 +21,11 @@ class Libro{
         return $this -> autor;
     }
 
+    public function getEstado(): Estado{
+        return $this-> estado;
+    }
+
     public function getNumPag(): int{
-        return $this -> getNumPag;
+        return $this -> numPag;
     }
 }
-?>

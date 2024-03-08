@@ -1,33 +1,43 @@
 <?php
-require_once('Libro.php');
-
-$libro1= new Libro('Libro1', 'Pepe G.', 'disponible', 500);
-$libro2= new Libro('Libro2', 'Juan G.', 'disponible', 400);
-$libro3= new Libro('Libro3', 'Ana G.', 'perdido', 200);
-$libro4= new Libro('Libro4', 'Maria G.', 'disponible', 450);
-
-$librosPag = [$libro1->getNumPag(), $libro2->getNumPag(), $libro3->getNumPag(), $libro4->getNumPag()];	
-$coleccion = [$libro1, $libro2, $libro3, $libro4];
-function buscarMaxPag($librosPag) {
-    $pagMax = 0;
-    foreach ($librosPag as $value) {
-        if ($value > $pagMax) {
-            $pagMax = $value;
-        }
+class Biblioteca {
+    private string $nomBiblioteca;
+    private array $coleccion;
+    
+    public function __construct(string $nomBiblioteca) {
+        $this->nomBiblioteca = $nomBiblioteca;
     }
-    return $pagMax;
-}
+   
+    public function AfegirLibro(Libro $libro): void{
+        $this->coleccion[] = $libro;
+   }
 
-echo $pagMax;
-
-function buscarLibrosperdidos($coleccion){
-    foreach ($coleccion as $index => $value) {
-        if ($value == "perdido" ){
-            echo $value -> getTitulo() . ' ' . ;
+    function buscarLibroMaxPag(): void {
+        $pagMax = 0;
+        $titulo = "";
+        foreach ($this -> coleccion as $libro) {
+            if ($libro -> getNumPag() > $pagMax) {
+                $pagMax = $libro -> getNumPag();
+                $titulo = $libro -> getTitulo();
+            }
         }
-
+        echo 'El libro con mayor nº de páginas es:'.'</br/>'. $titulo. ' ' .$pagMax. ' pàg'. '';
     }
 
-
+    function buscarLibrosPerdidos(): void{  
+        $librosPerdidos = null;
+        foreach ($this -> coleccion as $libro) {
+            if ($libro -> getEstado() == Estado::Perdido ){   
+                $librosPerdidos[] = $libro -> getTitulo();
+            }
+        }
+        if (is_null($librosPerdidos)){
+            echo 'En estos momentos no hay ningún libro perdido';
+        }else{
+            echo 'El listado de libros perdidos es:'. '</br>';
+            foreach ($librosPerdidos as $libro) {
+                echo  $libro . "</br>";
+            };
+        }
+    }   
 }
-?>
+
