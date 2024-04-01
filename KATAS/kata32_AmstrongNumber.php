@@ -1,31 +1,30 @@
 <?php
+echo "Aquest programa et diu si un nombre és d'Amstrong o no. \n";
 
-//falta entrada desde teclado
-$number = 407 ;     //407 / 153;  204
-echo $number.'</br>?';
+//$number = readline('Si us plau, introdueix un nombre: '); 
+//No funciona l'extensió readline (php 8.3). No hi ha la dll a la carpeta ext i no està a https://pecl.php.net/ per descarregar.
+ 
+echo 'Si us plau, introdueix un nombre: '; // 153, 204
+$number = trim(fgets(STDIN));   //Agafem valor sense espais en blanc
 
-//falta bucle según nº de dígitos
-$numeroDigits = strlen($number);
-echo $numeroDigits.'</br>?';
+esNombreAmstrong($number);
 
-$digit1 = $number % 10;
-$num1 = (int) $number / 10; 
-// echo $num1.'</br>?'; división da decimales: no castea a int
-echo $digit1.'</br>?';
+function esNombreAmstrong($number) {
+    $nombreDigits = strlen((string)$number);
+    $suma = 0;
+    $digitTemporal = $number;
+    $digit = 0;
 
-$digit2 = $num1 % 10;
-$num2 = (int) $num1 / 10; 
-echo $digit2.'</br>?';
-
-$digit3 = $num2 % 10;
-echo $digit3.'</br>?';
-
-if ($digit1**3 + $digit2**3 + $digit3**3 === $number){
-    $resposta = $number. ' és un nombre de Amstrong';
-}else{
-    $resposta = $number. ' NO és un nombre de Amstrong'; 
+    while ($digitTemporal != 0) {  //bucle de suma de termes elevats a la potencia del nombre de dígits
+        $digit = $digitTemporal % 10;
+        $suma += pow($digit, $nombreDigits);
+        $digitTemporal = intval($digitTemporal / 10); //agafem la part sencera amb intval
+    }
+    if ($suma == $number) {
+        $resposta = $number. " SI és un nombre d'Amstrong";
+    }else{
+        $resposta = $number. " NO és un nombre d'Amstrong"; 
+    }
+    echo $resposta;
 }
-echo $resposta;
-
-
 ?>
